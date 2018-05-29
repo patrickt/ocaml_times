@@ -1,15 +1,12 @@
 open Printf
 
-(* Does this exist in the stdlib? I couldn't find it. *)
-let array_tail (arr : 'a array) : 'a array =
-  Array.sub arr 1 (Array.length arr - 2)
-
-let array_punctuate (arr : string array) (sep : string) : string =
-  String.concat sep (Array.to_list arr) ^ sep
+let punctuate (lst : string list) (sep : string) : string =
+  String.concat sep lst ^ sep
 
 let main () =
-  print_string "Hello, world\n";
-  let result = array_punctuate (array_tail Sys.argv) " 👏 " in
+  (* How do I do compound lets? *)
+  let args = List.tl (Array.to_list Sys.argv) in
+  let result = punctuate args " 👏 " in
   print_string (result ^ "\n")
 ;;
 
